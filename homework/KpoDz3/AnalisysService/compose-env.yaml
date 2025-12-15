@@ -1,0 +1,11 @@
+version: '4'
+services:
+  db-users-api:
+    image: postgres:12
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: myuser
+      POSTGRES_DB: mydb

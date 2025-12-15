@@ -1,0 +1,47 @@
+services:
+  db-users-api:
+    image: postgres:12
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: myuser
+      POSTGRES_DB: mydb
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+  analysis-service:
+    build:
+      context: ./AnalisysService
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db-users-api
+
+  storage-service:
+    build:
+      context: ./StorageService
+    ports:
+      - "8080:8080"
+    depends_on:
+      - minio
+
+  gateway-service:
+    build:
+      context: ./GateWay
+    ports:
+      - "8083:8083"
+
+volumes:
+  minio_data:
