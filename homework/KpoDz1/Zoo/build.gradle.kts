@@ -1,5 +1,6 @@
 plugins {
 	java
+	application
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -30,4 +31,12 @@ tasks.withType<Test> {
         showStandardStreams = true
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
+}
+
+application {
+    mainClass.set("KPODZ1.Zoo.ZooApplication") 
+}
+
+tasks.withType<JavaExec> {
+    standardInput = System.`in`
 }
