@@ -39,3 +39,5 @@ docker-compose up -d --build
 База платежей: localhost:5433 (логин: user, пароль: password)
 
 База заказов: localhost:5431 (логин: user, пароль: password)
+
+Все задание выполнено по требованиям на 10 баллов (не реализован только WebSocket)
