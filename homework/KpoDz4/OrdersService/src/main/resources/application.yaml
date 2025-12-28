@@ -1,0 +1,24 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: OrdersService
+  datasource:
+    url: jdbc:postgresql://postgres-order:5432/orders_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirm-type: correlated
+    publisher-returns: true
+
+springdoc:
+  api-docs:
+    path: /api/orders/v3/api-docs

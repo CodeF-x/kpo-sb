@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель управления</title>
+    <style>
+        body { font-family: system-ui, sans-serif; display: flex; gap: 20px; padding: 20px; background: #f0f2f5; }
+        section { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); flex: 1; }
+        h2 { margin-top: 0; color: #333; font-size: 1.2rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.8rem; color: #666; margin-bottom: 4px; }
+        input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; }
+        th { background: #fafafa; }
+        #console { background: #222; color: #0f0; padding: 10px; border-radius: 4px; font-family: monospace; height: 100px; overflow-y: auto; margin-top: 20px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2>💰 Финансы</h2>
+        <div class="form-group">
+            <label>ID Аккаунта</label>
+            <input type="text" id="accId" placeholder="Введите UUID">
+        </div>
+        <button id="btnCreateAcc">Создать аккаунт</button>
+        <button id="btnCheckBalance" style="margin-top: 10px;">Проверить баланс</button>
+        <p>Баланс: <strong id="balanceValue">0</strong> ₽</p>
+
+        <div class="form-group" style="margin-top: 20px;">
+            <label>Сумма пополнения</label>
+            <input type="number" id="depAmount" placeholder="100">
+            <button id="btnAddBalance" style="margin-top: 10px; background: #28a745;">Пополнить</button>
+        </div>
+    </section>
+
+    <section style="flex: 2;">
+        <h2>📦 Заказы</h2>
+        <div style="display: flex; gap: 10px;">
+            <div class="form-group" style="flex: 1;">
+                <label>ID Пользователя</label>
+                <input type="text" id="orderUserId">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label>Товар</label>
+                <input type="text" id="orderDesc">
+            </div>
+            <div class="form-group" style="flex: 0.5;">
+                <label>Цена</label>
+                <input type="number" id="orderAmt">
+            </div>
+        </div>
+        <button id="btnCreateOrder">Оформить заказ</button>
+
+        <hr>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>История заказов</h3>
+            <button id="btnRefreshOrders" style="width: auto; padding: 5px 15px;">🔄</button>
+        </div>
+        <table id="orderTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Описание</th>
+                    <th>Сумма</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+
+        <div id="console">Система готова...</div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
